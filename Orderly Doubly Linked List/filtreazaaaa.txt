@@ -1,0 +1,35 @@
+SubAlgoritm filtreaza(lo, cond):
+
+	pre: lo – listă ordonată reprezentată pe listă s. înlănțuită
+		cond: {TELement} -> {T, F} – condiția dată
+	post: lo’ conține doar elementele care respectă cond
+
+	dacă p= NIL atunci:
+    		stop
+
+	(*Nod) p <- lo.prim
+	câtTimp p.urmator != NIL execută:
+		dacă !cond([p.urm].element) atunci:
+			aux <- p.urmator
+			p.urmator <- [p.urmator].urmator
+			lo.d <- lo.d – 1
+			dacă [p].urm != NIL atunci:
+				[[p].urm].anterior <- p
+			altfel
+				ultim = p
+			sfDaca
+			dealoca(aux)
+		sfDacă
+		p <- p.urmator
+	sfCâtTimp
+	dacă !cond([lo.prim].element)
+		aux <- prim
+		prim <- prim.urmator
+		dacă [p].urm != NIL atunci:
+			[[p].urm].anterior <- p
+		altfel
+			ultim = p
+		sfDaca
+		dealoca(aux)
+		lo.d <- lo.d -1
+	sfDacă
