@@ -1,0 +1,14 @@
+SubAlgoritm inverseaza(IteratorLp i1, IteratorLp i2):
+    pre: i1, i2-valid
+    post: elementele intre pozitiile i1 si i2 sunt inversate
+
+    daca (!valid(i1)) || (!valid(i2))
+        stop
+        arunca exceptie
+
+    cat timp i1.curent <= i2.curent
+        int aux = elemente.at(i1.curent);
+        elemente.at(i1.curent) = elemente.at(i2.curent);
+        elemente.at(i2.curent) = aux;
+        i1.curent ++;
+        i2.curent --;
